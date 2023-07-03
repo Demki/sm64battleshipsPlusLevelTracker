@@ -10,7 +10,7 @@ const MARK_2_BUTTON = MIDDLE_MOUSE_BUTTON;
 
 const DEFAULT_STAR_COUNT = 70;
 
-function mark(v) {
+function ltmark(v) {
   return (ev) => {
     m(ev.target);
     function m(target) {
@@ -66,7 +66,7 @@ function removeLine() {
 
 function mousedown(ev) {
   if(ev.button === MIDDLE_MOUSE_BUTTON) ev.preventDefault(); // prevent scroll toggle with middle mouse button
-  if (ev.target.classList.contains("item")) {
+  if (ev.target.classList.contains("titem")) {
     prev = ev.target;
     if (!ev.target.classList.contains('nocon')) {
       switch (ev.button) {
@@ -93,7 +93,7 @@ function mouseup(ev) {
     removeLine();
     if (target.classList.contains('nocon')) prevState = 'none';
   }
-  if (target.classList.contains("item")) {
+  if (target.classList.contains("titem")) {
     if (ev.ctrlKey && prevState === 'connecting' && target === prev && !isPath(target.parentElement) && !target.classList.contains('nocon')) {
       let newPath = document.createElement("div");
       newPath.classList.add("path");
@@ -102,13 +102,13 @@ function mouseup(ev) {
       newPath.append(prev);
     }
     else if (prevState !== 'connecting' && target === prev) {
-      if (ev.button === MARK_1_BUTTON) mark('1')(ev);
+      if (ev.button === MARK_1_BUTTON) ltmark('1')(ev);
       if (ev.button === MARK_2_BUTTON) {
         if (ev.ctrlKey) {
           disconnect(target);
         }
         else {
-          mark('2')(ev);
+          ltmark('2')(ev);
         }
       }
     }
@@ -246,7 +246,7 @@ window.addEventListener("load", () => {
 
   let i = 0;
   for (const child of document.getElementById("list").children) {
-    child.classList.add("item");
+    child.classList.add("titem");
     child.classList.add("color0");
     child.id = "item" + i;
     i++;
@@ -255,7 +255,7 @@ window.addEventListener("load", () => {
 
   for (const child of document.getElementById("others").children) {
     child.classList.add("nocon");
-    child.classList.add("item");
+    child.classList.add("titem");
     child.classList.add("color0");
     child.id = "item" + i;
     i++;
