@@ -271,7 +271,7 @@ window.addEventListener("load", () => {
   if (starCounterBtn) starCounterBtn.addEventListener("click", toggleStarCounter);
   const displayBtn = document.getElementById("displayBtn");
   if (displayBtn) displayBtn.addEventListener("click", toggleDisplay);
-  const nightBtn = document.getElementById("nightBtn");
+  const nightBtn = document.getElementById("ltNightBtn");
   if (nightBtn) nightBtn.addEventListener("click", toggleNightMode);
   const shortBtn = document.getElementById("shortBtn");
   if (shortBtn) shortBtn.addEventListener("click", toggleShort);
