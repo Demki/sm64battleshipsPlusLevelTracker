@@ -253,6 +253,24 @@ window.addEventListener("load", () => {
     child.dataset.mark = '0';
   }
 
+  const originalList = Array.from(document.getElementById("list").children);
+  document.getElementById("resetTrackerBtn").addEventListener("click", () => {
+    dumpToList(...originalList);
+    for(const div of originalList) {
+      div.dataset.mark = '0';
+      div.classList.add("color0");
+      div.classList.remove("color1");
+      div.classList.remove("color2");
+    }
+    for(const div of document.getElementById("others").children) {
+      div.dataset.mark = '0';
+      div.classList.add("color0");
+      div.classList.remove("color1");
+      div.classList.remove("color2");
+    }
+    Array.from(document.getElementsByClassName("path")).forEach(x => x.remove());
+  });
+
   for (const child of document.getElementById("others").children) {
     child.classList.add("nocon");
     child.classList.add("titem");
