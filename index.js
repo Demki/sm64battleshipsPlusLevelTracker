@@ -269,6 +269,7 @@ window.addEventListener("load", () => {
       div.classList.remove("color2");
     }
     Array.from(document.getElementsByClassName("path")).forEach(x => x.remove());
+    document.getElementById("starCount").innerHTML = "70";
   });
 
   for (const child of document.getElementById("others").children) {
