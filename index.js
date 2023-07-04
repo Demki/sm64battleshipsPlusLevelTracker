@@ -1,4 +1,5 @@
 // this whole thing is an ugly hack and needs to be refactored some day
+(function() {
 
 const LEFT_MOUSE_BUTTON = 0;
 const MIDDLE_MOUSE_BUTTON = 1;
@@ -10,7 +11,7 @@ const MARK_2_BUTTON = MIDDLE_MOUSE_BUTTON;
 
 const DEFAULT_STAR_COUNT = 70;
 
-function ltmark(v) {
+function mark(v) {
   return (ev) => {
     m(ev.target);
     function m(target) {
@@ -102,13 +103,13 @@ function mouseup(ev) {
       newPath.append(prev);
     }
     else if (prevState !== 'connecting' && target === prev) {
-      if (ev.button === MARK_1_BUTTON) ltmark('1')(ev);
+      if (ev.button === MARK_1_BUTTON) mark('1')(ev);
       if (ev.button === MARK_2_BUTTON) {
         if (ev.ctrlKey) {
           disconnect(target);
         }
         else {
-          ltmark('2')(ev);
+          mark('2')(ev);
         }
       }
     }
@@ -290,8 +291,8 @@ window.addEventListener("load", () => {
   if (starCounterBtn) starCounterBtn.addEventListener("click", toggleStarCounter);
   const displayBtn = document.getElementById("displayBtn");
   if (displayBtn) displayBtn.addEventListener("click", toggleDisplay);
-  const nightBtn = document.getElementById("ltNightBtn");
-  if (nightBtn) nightBtn.addEventListener("click", toggleNightMode);
+  // const nightBtn = document.getElementById("ltNightBtn");
+  // if (nightBtn) nightBtn.addEventListener("click", toggleNightMode);
   const shortBtn = document.getElementById("shortBtn");
   if (shortBtn) shortBtn.addEventListener("click", toggleShort);
   const toggleOthersBtn = document.getElementById("toggleOthersBtn");
@@ -541,3 +542,4 @@ function keyEventHandler(ev) {
       break;
   }
 }
+})()

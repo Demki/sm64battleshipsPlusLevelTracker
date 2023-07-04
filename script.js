@@ -1,3 +1,4 @@
+(function() {
 /**
  * @type {[[string, number]]}
  */
@@ -46,7 +47,7 @@ const colorSettings = {};
 
 const starDivs = new Map();
 
-// let nightMode = false;
+let nightMode = false;
 let colorPickerVisible = false;
 
 function starsFor([name, count]) {
@@ -494,3 +495,4 @@ function toggleColorPicker() {
     document.getElementById("colorsPicker").scrollIntoView();
   }
 }
+})()
